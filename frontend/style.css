@@ -48,6 +48,7 @@ body {
 .canvas {
   width: 90%;
   height: 34rem;
+  position: relative;
 }
 
 .canvas canvas {
