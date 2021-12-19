@@ -6,8 +6,8 @@ No paint 1.5 você pode utilizar de toda sua criatividade e abstracionismo para 
 
 As funcionalidades planejadas para o sistema e que serão implementadas no decorrer do desenvolvimento serão:
 
-- [ ] Desenhar no canvas utilizando o mouse
-- [ ] Alterar a cor e o tipo de linha que será utilizada
+- [x] Desenhar no canvas utilizando o mouse
+- [x] Alterar a cor e o tipo de linha que será utilizada
 - [ ] Apagar o desenho utilizando as ferramentas providas 
 - [ ] O usuário poderá realizar login
 - [ ] O usuário poderá salvar os desenhos (baixar e/ou salvar na conta caso esteja logado)

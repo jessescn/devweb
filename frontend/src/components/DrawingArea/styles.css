@@ -1,0 +1,8 @@
+.canvas-wrapper {
+  width: 90%;
+  height: 34rem;
+}
+
+canvas {
+  border: 2px solid #000 !important;
+}
