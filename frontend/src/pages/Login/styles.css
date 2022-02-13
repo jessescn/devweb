@@ -1,0 +1,38 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  text-align: center;
+  color: #5c5e5c;
+}
+
+.login-form input {
+  margin: 0.5rem 0;
+  height: 2rem;
+  padding-left: 0.5rem;
+}
+
+.login-form button {
+  margin: 0.5rem 0;
+  color: white;
+  background-color: #5c5e5c;
+  height: 3rem;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.login-form button:hover {
+  transform: scale(1.01);
+  opacity: 0.8;
+}
+
+.login-form span {
+  cursor: pointer;
+}
+
+.login-form span:hover {
+  text-decoration: underline;
+}
