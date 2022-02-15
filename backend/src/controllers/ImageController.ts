@@ -1,21 +1,34 @@
 import { Response } from "express";
-import database from "../db";
+import { CustomRequest } from "../middlewares/authMiddleware";
+import ImageRepository from "../repositories/image-repository";
+export default class ImageController {
+  constructor(private imageRepository: ImageRepository) {}
 
-const Image =
-  database.getCollection("images") || database.addCollection("images");
+  async index(req: CustomRequest, res: Response) {
+    const { $loki } = req.user;
 
-export default {
-  async index(req, res: Response) {
-    const user = req.user;
-    const allImages = Image.find({ userId: user.$loki });
-    return res.status(200).send(allImages);
-  },
-  async save(req, res: Response) {
-    const user = req.user;
+    const images = this.imageRepository.find({ userId: $loki });
+
+    return res.send(images);
+  }
+
+  async save(req: CustomRequest, res: Response) {
+    const { $loki } = req.user;
     const { data } = req.body;
 
-    const savedImage = Image.insert({ userId: user.$loki, image: data });
+    const newImage = this.imageRepository.insert({
+      userId: $loki,
+      image: data,
+    });
 
-    return res.send(savedImage);
-  },
-};
+    return res.json(newImage);
+  }
+
+  async delete(req: CustomRequest, res: Response) {
+    const { id } = req.params;
+
+    const deletedImage = this.imageRepository.remove(parseInt(id));
+
+    return res.json(deletedImage);
+  }
+}

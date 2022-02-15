@@ -1,7 +1,16 @@
-import { NextFunction, Response } from "express";
+import { NextFunction, Response, Request } from "express";
+import { User } from "../protocols/User";
 import { verify } from "../utils/token";
 
-export function authMiddleware(req, res: Response, next: NextFunction) {
+export type CustomRequest = Request & {
+  user?: User;
+};
+
+export function authMiddleware(
+  req: CustomRequest,
+  res: Response,
+  next: NextFunction
+) {
   const token = req.headers.authorization;
 
   if (!token) {
@@ -14,6 +23,6 @@ export function authMiddleware(req, res: Response, next: NextFunction) {
     res.status(401).send({ error: "invalid token" });
   }
 
-  req.user = user;
+  req.user = user as User;
   next();
 }

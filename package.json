@@ -1,8 +1,13 @@
 {
-  "dependencies": {
-    "bcrypt": "^5.0.1"
+  "name": "devweb",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/jessescn/devweb",
+  "author": "Jesse Souza <jesse.neto@objective.com.br>",
+  "scripts": {
+    "bootstrap": "cd ./backend && yarn install && cd ../frontend && yarn install",
+    "run:back": "cd ./backend && yarn run dev",
+    "run:front": "cd ./frontend && yarn run dev"
   },
-  "devDependencies": {
-    "@types/bcrypt": "^5.0.0"
-  }
+  "license": "MIT"
 }

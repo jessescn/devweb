@@ -18,7 +18,7 @@ export interface RegisterData {
 }
 
 export const handleLoginRequest = async (data: LoginData) => {
-  const response = await api.post("/login", data);
+  const response = await api.post("/users/login", data);
   if (response.status !== 200) {
     return null;
   }
@@ -33,7 +33,7 @@ export const handleLoginRequest = async (data: LoginData) => {
 };
 
 export const handleRegisterRequest = async (data: RegisterData) => {
-  const response = await api.post("/register", data);
+  const response = await api.post("/users/register", data);
 
   if (response.status !== 200 && response.status !== 204) {
     return null;

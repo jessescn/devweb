@@ -1,8 +1,8 @@
 import jwt from "jsonwebtoken";
 
-export function generateToken(data: any) {
+export function generateToken(data: any): string {
   return jwt.sign(data, process.env.JWT_SECRET, {
-    expiresIn: 90 * 60 * 60 * 24,
+    expiresIn: 90 * 60 * 60 * 24, // 90 days
   });
 }
 
