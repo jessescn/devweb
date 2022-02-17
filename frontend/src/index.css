@@ -11,8 +11,8 @@ body {
 }
 
 .page-wrapper {
-  width: 100%;
-  height: 100vh;
+  width: 100vw;
+  height: calc(100vh - 60px);
   margin: 0 auto;
   padding: 2rem;
 
@@ -23,11 +23,8 @@ body {
 }
 
 .navigate-btn {
-  position: absolute;
-  top: 20px;
-  right: 20px;
   padding: 5px 10px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   border-radius: 0.5rem;
 }
 

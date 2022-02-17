@@ -1,0 +1,8 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.wrapper button {
+  margin-left: 1rem;
+}

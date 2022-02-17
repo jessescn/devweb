@@ -3,7 +3,7 @@ import DrawingArea from "../DrawingArea";
 import { useState } from "react";
 import ToolsBar from "../ToolsBar";
 import { LineType } from "../utils/types";
-import { handleSaveImage } from "../../services/image-service";
+import { store, actions } from "../../store";
 
 const Canvas = () => {
   const [lines, setLines] = useState<LineType[]>([]);
@@ -11,7 +11,7 @@ const Canvas = () => {
   const [strokeWith, setStrokeWidth] = useState(4);
 
   const handleSave = useCallback((data: string) => {
-    handleSaveImage(data);
+    store.dispatch(actions.images.save(data));
   }, []);
 
   return (

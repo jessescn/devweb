@@ -18,15 +18,12 @@ const Register = () => {
     );
 
     if (response) {
-      navigate("../login");
+      navigate("../login", { replace: true });
     }
   };
 
   return (
     <div className="page-wrapper">
-      <button className="navigate-btn" onClick={() => navigate("../")}>
-        Home
-      </button>
       <Form ref={formRef} onSubmit={handleSubmit} className="register-form">
         <Input name="name" placeholder="Nome" />
         <Input name="email" placeholder="email" />

@@ -1,4 +1,5 @@
 import axios from "axios";
+import { RemoteImage } from "../store/ducks/user";
 
 const API_URL = "http://localhost:8080";
 
@@ -6,9 +7,13 @@ const api = axios.create({
   baseURL: API_URL,
 });
 
-export const handleSaveImage = async (image: string) => {
+export const handleSaveImage = async (image: string): Promise<RemoteImage> => {
   const token = localStorage.getItem("user_token") || "";
-  if (!token) return;
+
+  if (!token) {
+    throw new Error("token not found");
+  }
+
   const response = await api.post(
     "/images",
     { data: image },
@@ -18,29 +23,27 @@ export const handleSaveImage = async (image: string) => {
       },
     }
   );
+
   if (response.status !== 200) {
-    return null;
+    throw new Error("Error saving image");
   }
 
   return response.data;
 };
 
-export type RemoteImage = {
-  userId: number;
-  image: string;
-  $loki: number;
-};
-
 export const listAllImages = async (): Promise<RemoteImage[]> => {
   const token = localStorage.getItem("user_token") || "";
-  if (!token) return [];
+  if (!token) {
+    throw new Error("missing token");
+  }
   const response = await api.get("/images", {
     headers: {
       authorization: token,
     },
   });
+
   if (response.status !== 200) {
-    return [];
+    throw new Error("list all images error");
   }
 
   return response.data;

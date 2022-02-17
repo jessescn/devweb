@@ -1,26 +1,18 @@
+import "./styles.css";
 import Canvas from "../../components/Canvas";
 import Logo from "../../assets/logo.png";
-import { useNavigate } from "react-router-dom";
-import "./styles.css";
-import { useEffect, useState } from "react";
-import { listAllImages, RemoteImage } from "../../services/image-service";
+import { useEffect } from "react";
+import { store, useSelector, actions } from "../../store";
 
 const Home = () => {
-  const navigate = useNavigate();
-  const [images, setImages] = useState<RemoteImage[]>([]);
+  const images = useSelector((state) => state.images.images);
 
   useEffect(() => {
-    listAllImages().then((data) => {
-      console.log(data);
-      setImages(data);
-    });
+    store.dispatch(actions.images.loadAll());
   }, []);
 
   return (
     <div className="page-wrapper">
-      <button className="navigate-btn" onClick={() => navigate("login")}>
-        Login
-      </button>
       <div className="title">
         <h1 className="main-title">
           Paint 1.5
