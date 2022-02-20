@@ -12,7 +12,7 @@ export type RemoteImage = {
   $loki: number;
 };
 
-const initialState: State = {
+export const initialState: State = {
   loadingImageStatus: "prismine",
   images: [],
 };

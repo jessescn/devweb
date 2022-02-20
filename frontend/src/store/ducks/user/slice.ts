@@ -29,7 +29,7 @@ export type State = {
 const persistedUser = localStorage.getItem("user_info");
 const persistedToken = localStorage.getItem("user_token");
 
-const initialState: State = {
+export const initialState: State = {
   user: persistedUser ? JSON.parse(persistedUser) : null,
   token: persistedToken ?? "",
   loginStatus: "prismine",
