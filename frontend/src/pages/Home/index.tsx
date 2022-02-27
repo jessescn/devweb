@@ -3,26 +3,30 @@ import Canvas from "../../components/Canvas";
 import Logo from "../../assets/logo.png";
 import { useEffect } from "react";
 import { store, useSelector, actions } from "../../store";
+import { useTheme } from "../../hooks/use-theme";
 
 const Home = () => {
   const images = useSelector((state) => state.images.images);
+  const { theme } = useTheme();
 
   useEffect(() => {
     store.dispatch(actions.images.loadAll());
   }, []);
 
   return (
-    <div className="page-wrapper">
+    <div className="page-wrapper" style={{ backgroundColor: theme.bgColor }}>
       <div className="title">
-        <h1 className="main-title">
+        <h1 style={{ color: theme.color }} className="main-title">
           Paint 1.5
           <img src={Logo} alt="logo" />
         </h1>
-        <p>Draw from your browser</p>
+        <p style={{ color: theme.color }}>Draw from your browser</p>
       </div>
       <Canvas />
       <div>
-        <h3 style={{ marginBottom: "0.3rem" }}>Imagens salvas</h3>
+        <h3 style={{ marginBottom: "0.3rem", color: theme.color }}>
+          Imagens salvas
+        </h3>
         {images.map((elm) => (
           <img
             key={elm.$loki}

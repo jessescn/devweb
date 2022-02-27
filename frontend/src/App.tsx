@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Header from "./components/Header";
+import { ThemeProvider } from "./contexts/theme-context";
 
 // const PrivateRoute = () => {
 //   const auth = true; // determine if authorized, from context or however you're doing it
@@ -14,14 +15,14 @@ import Header from "./components/Header";
 
 const App = () => {
   return (
-    <>
+    <ThemeProvider>
       <Header />
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
       </Routes>
-    </>
+    </ThemeProvider>
   );
 };
 

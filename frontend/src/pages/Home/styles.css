@@ -6,7 +6,6 @@
 .title h1 {
   font-size: 3rem;
   margin-bottom: 0.5rem;
-  color: #414241;
   display: flex;
   align-items: center;
   font-style: italic;
@@ -16,8 +15,4 @@
   margin-left: 1rem;
   height: 2.5rem;
   width: auto;
-}
-
-.title p {
-  color: #5c5e5c;
 }

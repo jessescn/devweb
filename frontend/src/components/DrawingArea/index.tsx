@@ -5,6 +5,7 @@ import { LineType } from "../utils/types";
 import Konva from "konva";
 
 import "./styles.css";
+import { useTheme } from "../../hooks/use-theme";
 
 type DrawingAreaProps = {
   lines: LineType[];
@@ -23,6 +24,7 @@ const DrawingArea = ({
 }: DrawingAreaProps) => {
   const isDrawing = useRef(false);
   const stageRef = createRef<Konva.Stage>();
+  const { theme } = useTheme();
 
   const handleMouseDown = (e: KonvaEventObject<MouseEvent>) => {
     isDrawing.current = true;
@@ -99,7 +101,12 @@ const DrawingArea = ({
         </Layer>
       </Stage>
       <div className="save-wrapper">
-        <button onClick={handleSaveImage}>Salvar</button>
+        <button
+          onClick={handleSaveImage}
+          style={{ backgroundColor: theme.color, color: theme.bgColor }}
+        >
+          Salvar
+        </button>
       </div>
     </div>
   );
